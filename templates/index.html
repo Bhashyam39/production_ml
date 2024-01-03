@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Prediction</title>
+</head>
+<body>
+    <h1 style="color: red;text-align: center;">House Price Prediction</h1>
+    <div style="text-align: center;">
+        <form method="POST">
+            <label>Bed Rooms:</label><br>
+            <input type="range" name = "bedrooms" 
+            min="1" max="10" step="1"
+            required><br><br>
+            <label>Bath Rooms</label><br>
+            <input type="range" name = "bathrooms" 
+            min="1" max="10" step="1"
+            required><br><br>
+            <label>sft:</label><br>
+            <input type="range" name = "sft" 
+            min="500" max="10000" 
+            required><br><br>
+            <label>location</label><br>
+            <select name="location" id="">
+                {% for i in location_mapping %}
+                <option value="{{location_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+            <label>status</label><br>
+            <select name="status" id="">
+                {% for i in status_mapping%}
+                <option value="{{status_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+            <label>direction</label><br>
+            <select name="direction" id="">
+                {% for i in direction_mapping %}
+                <option value="{{direction_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+            <label>Property type</label><br>
+            <select name="Property type" id="">
+                {% for i in property_type_mapping %}
+                <option value="{{property_type_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+            <button>submit</button>
+        </form>
+        <br><br>
+        {%if prediction is defined%}
+        <div style="text-align:center">
+            <label>Prediction: {{prediction}}</label>
+        </div>
+        {% endif %}
+    </div>
+    
+</body>
+</html>
